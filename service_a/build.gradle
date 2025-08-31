@@ -22,8 +22,39 @@ configurations {
 repositories {
     mavenCentral()
 }
+ext {
+    mapstructVersion = "1.6.2"
+}
 
 dependencies {
+    // Spring Boot
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // Kafka
+    implementation("org.springframework.kafka:spring-kafka")
+
+    // MongoDB
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+    // OpenFeign (входит в Spring Cloud)
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+
+    // Lombok
+    compileOnly("org.projectlombok:lombok:1.18.34")
+    annotationProcessor("org.projectlombok:lombok:1.18.34")
+
+    // MapStruct
+    implementation("org.mapstruct:mapstruct:${property("mapstructVersion")}")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${property("mapstructVersion")}")
+
+
+    // Test
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:2023.0.3")
+    }
 }
 
 tasks.named('test') {
