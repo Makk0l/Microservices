@@ -1,18 +1,23 @@
 spring:
   application:
-    name: service_a
+    name: service-a
 
   data:
     mongodb:
       uri: mongodb://mongo:27017/service-a-db
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka:9092  # подключение к Kafka внутри Docker
     consumer:
-      auto-offset-reset: earliest
       group-id: service-a
+      auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.value.default.type: mentorship.roadmap.microservices.service_a.dto.MessageRequest
+
+server:
+  port: 6969  # свободный порт для Tomcat
 
 service-b:
-  url: http://service-b:8081
+  url: http://service-b:8080  # внутри Docker нужно указывать контейнерный порт

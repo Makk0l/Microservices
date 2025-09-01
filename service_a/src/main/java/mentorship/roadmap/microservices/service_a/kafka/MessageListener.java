@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 public class MessageListener {
     private final MessageService service;
 
-    @KafkaListener(topics = "topic in", groupId = "service-a")
+    @KafkaListener(topics = "topic_in", groupId = "service-a")
     public void listen(MessageRequest request){
-        log.info("Received message from kafka:", request);
+        log.info("Received message from kafka: {}", request);
         service.processMessage(request);
     }
 }
