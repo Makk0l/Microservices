@@ -24,6 +24,26 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot
+	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	// Redis
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
+	// OpenFeign
+	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+
+	// Lombok
+	compileOnly("org.projectlombok:lombok:1.18.34")
+	annotationProcessor("org.projectlombok:lombok:1.18.34")
+
+	// Test
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+dependencyManagement {
+	imports {
+		mavenBom("org.springframework.cloud:spring-cloud-dependencies:2023.0.3")
+	}
 }
 
 tasks.named('test') {
