@@ -1,17 +1,17 @@
+server:
+  port: 8083
+
 spring:
-  application:
-    name: service_c
+  datasource:
+    url: jdbc:postgresql://postgres:5432/service_c_db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
   kafka:
     bootstrap-servers: kafka:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
-  datasource:
-    url: jdbc:postgresql://postgres:5432/service_c_db
-    password: user
-    username: password
-    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update

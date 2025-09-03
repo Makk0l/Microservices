@@ -1,11 +1,11 @@
-spring:
-  application:
-    name: service_b
+server:
+  port: 8082
 
+spring:
   data:
     redis:
-      host: redis
-      port: 6379
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
 
 service-c:
-  uri: http://service-c:8080
+  url: ${SERVICE_C_URL}

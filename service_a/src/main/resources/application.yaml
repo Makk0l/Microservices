@@ -17,7 +17,7 @@ spring:
         spring.json.value.default.type: mentorship.roadmap.microservices.service_a.dto.MessageRequest
 
 server:
-  port: 6969  # свободный порт для Tomcat
+  port: 8081
 
 service-b:
   url: http://service-b:8080  # внутри Docker нужно указывать контейнерный порт

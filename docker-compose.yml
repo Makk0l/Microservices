@@ -1,5 +1,5 @@
+version: '3.8'
 services:
-
   kafka:
     image: bitnami/kafka:latest
     environment:
@@ -47,30 +47,25 @@ services:
       - kafka
       - mongo
     environment:
-      # MongoDB
       MONGODB_URI: mongodb://mongo:27017/service-a-db
-
-      # Kafka
       KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-
-      # URLs до других сервисов
-      SERVICE_B_URL: http://service-b:8080
+      SERVICE_B_URL: http://service-b:8082
     ports:
-      - "8081:8080"
+      - "8081:8081"
+    restart: always
 
   service-b:
     build: ./service_b
     depends_on:
       - redis
+      - service-c
     environment:
-      # Redis
       REDIS_HOST: redis
       REDIS_PORT: 6379
-
-      # URLs до других сервисов
-      SERVICE_C_URL: http://service-c:8080
+      SERVICE_C_URL: http://service-c:8083
     ports:
-      - "8082:8080"
+      - "8082:8082"
+    restart: always
 
   service-c:
     build: ./service_c
@@ -78,12 +73,10 @@ services:
       - postgres
       - kafka
     environment:
-      # PostgreSQL
       DATASOURCE_URL: jdbc:postgresql://postgres:5432/service_c_db
       DATASOURCE_USERNAME: user
       DATASOURCE_PASSWORD: password
-
-      # Kafka
       KAFKA_BOOTSTRAP_SERVERS: kafka:9092
     ports:
-      - "8083:8080"
+      - "8083:8083"
+    restart: always
