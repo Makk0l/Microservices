@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-@FeignClient(name = "service-c", url = "${service-c.url}")
+@FeignClient(name = "service-c", url = "${SERVICE_C_URL}")
 public interface ServiceCClient {
 
     @PostMapping("/api/save")

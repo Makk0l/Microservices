@@ -26,9 +26,9 @@ public class MessageService {
                 .receivedAt(Instant.now())
                 .build();
         repository.save(document);
-        log.info("Saved message to MongoDB:", document);
+        log.info("Saved message to MongoDB:{}", document);
 
         MessageResponse response = serviceBClient.process(request);
-        log.info("Response from service B:", response);
+        log.info("Response from service B:{}", response);
     }
 }
