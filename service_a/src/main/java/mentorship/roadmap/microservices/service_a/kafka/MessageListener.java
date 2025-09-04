@@ -17,5 +17,6 @@ public class MessageListener {
     public void listen(MessageRequest request){
         log.info("Received message from kafka: {}", request);
         service.processMessage(request);
+        log.info("Request successfully processed: {}", request);
     }
 }

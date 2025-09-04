@@ -1,7 +1,6 @@
-package mentorship.roadmap.microservices.service_a.ListenerTest;
+package mentorship.roadmap.microservices.service_a.kafka;
 
 import mentorship.roadmap.microservices.service_a.dto.MessageRequest;
-import mentorship.roadmap.microservices.service_a.kafka.MessageListener;
 import mentorship.roadmap.microservices.service_a.service.MessageService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,11 +1,10 @@
-package mentorship.roadmap.microservices.service_a.ServiceTest;
+package mentorship.roadmap.microservices.service_a.service;
 
 import mentorship.roadmap.microservices.service_a.client.ServiceBClient;
 import mentorship.roadmap.microservices.service_a.dto.MessageRequest;
 import mentorship.roadmap.microservices.service_a.dto.MessageResponse;
 import mentorship.roadmap.microservices.service_a.model.MessageDocument;
 import mentorship.roadmap.microservices.service_a.repository.MessageRepository;
-import mentorship.roadmap.microservices.service_a.service.MessageService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;

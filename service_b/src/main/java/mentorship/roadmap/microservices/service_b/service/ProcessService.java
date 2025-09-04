@@ -16,15 +16,18 @@ public class ProcessService {
     private final ServiceCClient serviceCClient;
     private final RedisRepository repository;
 
-    public MessageResponse process(MessageRequest request){
+    public MessageResponse process(MessageRequest request) {
 
         log.info("Processing request: {}", request);
-        if ("important".equalsIgnoreCase(request.getType())){
+
+        if ("important".equalsIgnoreCase(request.getType())) {
             repository.saveImportantMessage(request);
             log.info("Saved important message to Redis; {}", request.getId());
+        } else {
+            log.warn("Message not important. Request: {}", request);
         }
         MessageResponse response = serviceCClient.save(request);
-        log.info("Response from service C: {}",response);
+        log.info("Response from service C: {}", response);
         return response;
     }
 }

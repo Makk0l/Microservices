@@ -28,7 +28,7 @@ public class SaveService {
         repository.save(entity);
         log.info("Saved to Posgres: {}", entity);
 
-        kafkaTemplate.send("topic-out", request);
+        kafkaTemplate.send("topic-out", request.getId(), request);
         log.info("Publisher to kafka {}",request);
         return new MessageResponse("Ok", "Saved and Published");
     }
